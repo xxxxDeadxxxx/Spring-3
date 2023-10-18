@@ -1,0 +1,37 @@
+package temperatureconverter;
+
+/**
+ * This class provides a method to convert temperature from Celsius to Fahrenheit.
+ */
+public class TemperatureConverter {
+    /**
+     * Converts temperature from Celsius to Fahrenheit.
+     *
+     * @param celsius The temperature in degrees Celsius.
+     * @return The temperature in degrees Fahrenheit.
+     */
+    public static double convertCelsiusToFahrenheit(double celsius) {
+        double fahrenheit = (celsius * 9 / 5) + 32;
+        return fahrenheit;
+    }
+
+    /**
+     * Main method to test the temperature conversion.
+     *
+     * @param args The command line arguments.
+     */
+    public static void main(String[] args) {
+        // Test the conversion with known physical constants
+        double absoluteZeroCelsius = -273.15; // Absolute zero in degrees Celsius
+        double absoluteZeroFahrenheit = convertCelsiusToFahrenheit(absoluteZeroCelsius);
+        System.out.println("Absolute zero in degrees Fahrenheit: " + absoluteZeroFahrenheit);
+
+        double boilingPointWaterCelsius = 100; // Boiling point of water in degrees Celsius
+        double boilingPointWaterFahrenheit = convertCelsiusToFahrenheit(boilingPointWaterCelsius);
+        System.out.println("Boiling point of water in degrees Fahrenheit: " + boilingPointWaterFahrenheit);
+
+        double freezingPointWaterCelsius = 0; // Freezing point of water in degrees Celsius
+        double freezingPointWaterFahrenheit = convertCelsiusToFahrenheit(freezingPointWaterCelsius);
+        System.out.println("Freezing point of water in degrees Fahrenheit: " + freezingPointWaterFahrenheit);
+    }
+}

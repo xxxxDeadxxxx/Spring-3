@@ -1,0 +1,42 @@
+	package speedcalculator;
+	 
+	/**
+	 * This class calculates the average speed of an athlete in miles per hour.
+	 */
+	public class SpeedCalculator {
+	    /**
+	     * Calculates the average speed in miles per hour.
+	     *
+	     * @param distanceInKm The distance covered by the athlete in kilometers.
+	     * @param timeInMinutes The time taken by the athlete in minutes.
+	     * @param timeInSeconds The time taken by the athlete in seconds.
+	     * @return Returns the average speed in miles per hour.
+	     */
+	    public static double calculateAverageSpeed(int distanceInKm, int timeInMinutes, int timeInSeconds) {
+	        // Convert distance from kilometers to miles
+	        double distanceInMiles = distanceInKm / 1.6;
+	 
+	        // Convert time from minutes and seconds to hours
+	        double timeInHours = (timeInMinutes / 60.0) + (timeInSeconds / 3600.0);
+	 
+	        // Calculate average speed in miles per hour
+	        double averageSpeedInMph = distanceInMiles / timeInHours;
+	 
+	        return averageSpeedInMph;
+	    }
+	 
+	    /**
+	     * Main method to test the SpeedCalculator class.
+	     *
+	     * @param args Command line arguments (not used).
+	     */
+	    public static void main(String[] args) {
+	        int distanceInKm = 14;
+	        int timeInMinutes = 45;
+	        int timeInSeconds = 30;
+	 
+	        double averageSpeedInMph = calculateAverageSpeed(distanceInKm, timeInMinutes, timeInSeconds);
+	 
+	        System.out.println("Average speed: " + averageSpeedInMph + " mph");
+	    }
+	}

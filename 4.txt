@@ -1,0 +1,51 @@
+	package populationforecast;
+	 
+	/**
+	 * This class calculates the projected population change in a country for the next 5 years based on birth rate,
+	 * death rate, and emigration rate.
+	 */
+	public class PopulationForecast {
+	 
+	    /**
+	     * Calculates the projected population for the next 5 years based on the given birth rate, death rate, and emigration rate.
+	     *
+	     * @param initialPopulation The initial population of the country in 2023.
+	     * @param birthRate         The rate of births per second.
+	     * @param deathRate         The rate of deaths per second.
+	     * @param emigrationRate    The rate of emigration per second.
+	     * @return Returns an array of projected populations for the next 5 years.
+	     */
+	    public static long[] calculatePopulationForecast(long initialPopulation, double birthRate, double deathRate, double emigrationRate) {
+	        long[] projectedPopulation = new long[5];
+	        projectedPopulation[0] = initialPopulation;
+	 
+	        // Calculate the projected population for each year
+	        for (int i = 1; i < 5; i++) {
+	            // Calculate the number of seconds in a year
+	            long secondsInYear = 365 * 24 * 60 * 60;
+	 
+	            // Calculate the net population change per year
+	            long netPopulationChange = (long) (birthRate * secondsInYear) - (long) (deathRate * secondsInYear) - (long) (emigrationRate * secondsInYear);
+	 
+	            // Calculate the projected population for the next year
+	            projectedPopulation[i] = projectedPopulation[i - 1] + netPopulationChange;
+	        }
+	 
+	        return projectedPopulation;
+	    }
+	 
+	    public static void main(String[] args) {
+	        long initialPopulationIn2023 = 35234980;
+	        double birthRatePerSecond = 1.0 / 17;
+	        double deathRatePerSecond = 1.0 / 7;
+	        double emigrationRatePerSecond = 1.0 / 45;
+	 
+	        long[] projectedPopulation = calculatePopulationForecast(initialPopulationIn2023, birthRatePerSecond, deathRatePerSecond, emigrationRatePerSecond);
+	 
+	        // Print the projected population for each year
+	        for (int i = 0; i < 5; i++) {
+	            int year = 2024 + i;
+	            System.out.println("Projected population in " + year + ": " + projectedPopulation[i]);
+	        }
+	    }
+	}

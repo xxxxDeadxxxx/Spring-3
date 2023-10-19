@@ -1,0 +1,49 @@
+public class PopulationForecast {
+
+    private static final int YEARS_TO_FORECAST = 5;
+
+
+    public static long[] calculatePopulationForecast(long initialPopulation, double birthsPerSecond, double deathsPerSecond, double emigrationPerSecond) {
+
+        long[] projectedPopulation = new long[YEARS_TO_FORECAST];
+
+        projectedPopulation[0] = initialPopulation;
+
+        for (int i = 1; i < YEARS_TO_FORECAST; i++) {
+
+            long secondsInYear = 365 * 24 * 60 * 60;
+
+            long netPopulationChange = (long) (birthsPerSecond * secondsInYear) - (long) (deathsPerSecond * secondsInYear) - (long) (emigrationPerSecond * secondsInYear);
+
+            projectedPopulation[i] = projectedPopulation[i - 1] + netPopulationChange;
+
+        }
+
+        return projectedPopulation;
+
+    }
+
+
+    public static void main(String[] args) {
+
+        long initialPopulationIn2023 = 35_234_980;
+
+        double birthsPerSecond = 1.0 / 17;
+
+        double deathsPerSecond = 1.0 / 7;
+
+        double emigrationPerSecond = 1.0 / 45;
+
+        long[] projectedPopulation = calculatePopulationForecast(initialPopulationIn2023, birthsPerSecond, deathsPerSecond, emigrationPerSecond);
+
+        for (int i = 0; i < YEARS_TO_FORECAST; i++) {
+
+            int year = 2024 + i;
+
+            System.out.println("Projected population in " + year + ": " + projectedPopulation[i]);
+
+        }
+
+    }
+
+}
